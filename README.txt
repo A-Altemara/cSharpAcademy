@@ -1,6 +1,6 @@
-# Free Code Camp test files
+#Free Code Camp test files
 
-## Description
+##Description
 Repo dedicated to learning C# from the Free Code camp and Microsoft learning
 
 ## Try it here
