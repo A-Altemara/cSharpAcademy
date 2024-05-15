@@ -5,8 +5,8 @@ static class Program
 {
     static void Main()
     {
-
-        IfElse.PlayGame();
+        IfElse.RenewSubscription();
+        // IfElse.PlayGame();
 
         // Lesson1.DiceRandom();
         
