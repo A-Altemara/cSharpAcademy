@@ -4,20 +4,20 @@ static class ArraysForEach
 {
     public static void LearnArrays()
     {
-        string[] fraudelentOrderIds = new string[3];
-        fraudelentOrderIds[0] = "A123";
-        fraudelentOrderIds[1] = "B456";
-        fraudelentOrderIds[2] = "C789";
-        // fraudelentOrderIds[3] = "C789"; outside of bounds of array
+        string[] fraudulentOrderIds = new string[3];
+        fraudulentOrderIds[0] = "A123";
+        fraudulentOrderIds[1] = "B456";
+        fraudulentOrderIds[2] = "C789";
+        // fraudulentOrderIds[3] = "C789"; outside of bounds of array
         
-        Console.WriteLine($"Second: {fraudelentOrderIds[1]}");
+        Console.WriteLine($"Second: {fraudulentOrderIds[1]}");
 
-        string[] fraudelentOrderIds1 = { "a123", "b456", "c789" };
-        Console.WriteLine($"Second declariation: {fraudelentOrderIds1[0]}");
-        fraudelentOrderIds1[0] = "f00";
-        Console.WriteLine($"reassign: {fraudelentOrderIds1[0]}");
+        string[] fraudulentOrderIds1 = { "a123", "b456", "c789" };
+        Console.WriteLine($"Second declaration: {fraudulentOrderIds1[0]}");
+        fraudulentOrderIds1[0] = "f00";
+        Console.WriteLine($"reassign: {fraudulentOrderIds1[0]}");
         
-        Console.WriteLine($"There are {fraudelentOrderIds1.Length} elements in this array");
+        Console.WriteLine($"There are {fraudulentOrderIds1.Length} elements in this array");
     }
 
     public static void LearnForEach()
@@ -37,7 +37,7 @@ static class ArraysForEach
     public static void UseForEach()
     {
         string[] orderList = ["b123", "c234", "a345", "c15", "b177", "g3003", "c234", "b179"];
-         
+        var fraudCheck = new List<string>();
         foreach (var orderNumber in orderList)
         {
             // if (orderNumber.StartsWith('b'))
@@ -53,6 +53,6 @@ static class ArraysForEach
         
         var fraudCheck2 = orderList.Where(order => order.StartsWith("b"));
         Console.WriteLine(string.Join(',',fraudCheck2));
-        List<object> things = [0, 1.5, "Hellow World!", new List<int> { 1, 2, 3 }];
+        List<object> things = [0, 1.5, "Hello World!", new List<int> { 1, 2, 3 }];
     }
 }
