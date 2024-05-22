@@ -8,7 +8,9 @@ static class Program
 {
     static void Main()
     {
-        Readable.ReabilityUpdate();
+        StudentGrades.Grades();
+        
+        // Readable.ReabilityUpdate();
         // Readable.WhiteSpace();
         // Readable.CreatingComments();
         
