@@ -8,7 +8,19 @@ static class Program
 {
     static void Main()
     {
-        StudentGrades.Grades();
+        DoWhileAndWhileLoops.DoWhileLoops();
+        DoWhileAndWhileLoops.WhileLoops();
+        
+        // ForLoops.FizzBuzz();
+        // ForLoops.BasicLoops();
+        
+        // Switches.ChallengeSwitch();
+        
+        // ScopeAndLogic.ChallengeScope();
+        
+        // BooleanExpressions.EvaluatingExpressions();
+        
+        // StudentGrades.Grades();
         
         // Readable.ReabilityUpdate();
         // Readable.WhiteSpace();
@@ -25,3 +37,4 @@ static class Program
         
     }
 }
+
