@@ -8,7 +8,10 @@ static class Program
 {
     static void Main()
     {
-        DoWhileAndWhileLoops.nullableVariable();
+        DoWhileAndWhileLoops.ArrayVerification();
+        // DoWhileAndWhileLoops.ValidateString();
+        // DoWhileAndWhileLoops.RequestNumber();
+        // DoWhileAndWhileLoops.nullableVariable();
         // DoWhileAndWhileLoops.RollPlayingGame();
         // DoWhileAndWhileLoops.DoWhileLoops();
         // DoWhileAndWhileLoops.WhileLoops();
