@@ -8,8 +8,10 @@ static class Program
 {
     static void Main()
     {
-        DoWhileAndWhileLoops.DoWhileLoops();
-        DoWhileAndWhileLoops.WhileLoops();
+        DoWhileAndWhileLoops.nullableVariable();
+        // DoWhileAndWhileLoops.RollPlayingGame();
+        // DoWhileAndWhileLoops.DoWhileLoops();
+        // DoWhileAndWhileLoops.WhileLoops();
         
         // ForLoops.FizzBuzz();
         // ForLoops.BasicLoops();
