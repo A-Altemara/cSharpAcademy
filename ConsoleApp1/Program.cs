@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices.JavaScript;
 
 namespace ConsoleApp1;
@@ -8,7 +9,9 @@ static class Program
 {
     static void Main()
     {
-        DoWhileAndWhileLoops.ArrayVerification();
+        SelectionAndIteration.ContosoPets();
+        
+        // DoWhileAndWhileLoops.ArrayVerification();
         // DoWhileAndWhileLoops.ValidateString();
         // DoWhileAndWhileLoops.RequestNumber();
         // DoWhileAndWhileLoops.nullableVariable();
