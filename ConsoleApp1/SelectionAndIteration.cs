@@ -4,6 +4,20 @@ namespace ConsoleApp1;
 
 static class SelectionAndIteration
 {
+    enum AnimalCharacteristics
+    {
+        Id,
+        Species,
+        Age,
+        Nickname,
+        PhysicalDescrition,
+        Personality,
+    }
+
+    private static int IdIndex => (int)AnimalCharacteristics.Id;
+
+    private const int AgeIndex = 2;
+
     public static void ContosoPets()
     {
         // the ourAnimals array will store the following: 
@@ -22,7 +36,7 @@ static class SelectionAndIteration
         // array used to store runtime data, there is no persisted data
         string[,] ourAnimals = new string[maxPets, 6];
         //could also be written:
-        ourAnimals[0, 0] = "kitty";
+        ourAnimals[0, (int)AnimalCharacteristics.Species] = "kitty";
         string[][] ourAnimals2 = new string[maxPets][];
         string[] a1, a2, a3, a4, a5, a6;
         a1 = new string[8];
@@ -113,8 +127,8 @@ static class SelectionAndIteration
                 menuSelection = readResult.ToLower();
             }
 
-            var rows = ourAnimals.GetLength(0);
-            var cols = ourAnimals.GetLength(1); //index with ourAnimals[row,col]
+            var pets = ourAnimals.GetLength(0);
+            var characteristic = ourAnimals.GetLength(1); //index with ourAnimals[row,col]
 
             switch (menuSelection)
             {
@@ -124,15 +138,15 @@ static class SelectionAndIteration
                     // for could also be declared (int i = 0; i< maxPets, i++) and not need the extra variables rows and cols.
 
                     // could use pet in place of row and pets in place of rows to be more explicit
-                    for (int row = 0; row < rows; row++)
+                    for (int pet = 0; pet < pets; pet++)
                     {
-                        if (ourAnimals[row, 0] != "ID #: ")
+                        if (ourAnimals[pet, (int)AnimalCharacteristics.Id] != "ID #: ")
                         {
                             // could use characteristic instead of col as above for better readability
-                            for (int col = 0; col < cols; col++)
+                            for (int character = 0; character < characteristic; character++)
                             {
                                 // call would be Console.WriteLine(ourAnimals[pet, characteristic]) using custom variables
-                                Console.WriteLine(ourAnimals[row, col]);
+                                Console.WriteLine(ourAnimals[pet, character]);
                             }
 
                             Console.WriteLine("");
@@ -145,9 +159,9 @@ static class SelectionAndIteration
                 case "2":
                     var animalCount = 0;
                     var anotherPet = "y";
-                    for (int row = 0; row < rows; row++)
+                    for (int pet = 0; pet < pets; pet++)
                     {
-                        if (ourAnimals[row, 0] != "ID #: ")
+                        if (ourAnimals[pet, (int)AnimalCharacteristics.Id] != "ID #: ")
                         {
                             animalCount++;
                         }
@@ -168,41 +182,42 @@ static class SelectionAndIteration
                     while (anotherPet == "y" && animalCount < maxPets)
                     {
                         Console.WriteLine("Would you like to enter a new pet? y/n");
-                        anotherPet = Console.ReadLine()?.ToLower()??null;
+                        anotherPet = Console.ReadLine()?.ToLower() ?? null;
 
                         if (anotherPet != null && anotherPet == "y")
                         {
-                            for (int row = 0; row < rows; row++)
+                            for (int pet = 0; pet < pets; pet++)
                             {
-                                if (ourAnimals[row, 0] != "ID #: ")
+                                if (ourAnimals[pet, (int)AnimalCharacteristics.Id] != "ID #: ")
                                 {
                                     continue;
                                 }
 
-                                for (int col = 1; col < cols; col++)
+                                for (int character = 1; character < characteristic; character++)
                                 {
-                                    Console.WriteLine($"Please enter the {ourAnimals[row, col]} leave blank if unknown and press enter.");
+                                    Console.WriteLine(
+                                        $"Please enter the {ourAnimals[pet, character]} leave blank if unknown and press enter.");
                                     readResult = Console.ReadLine();
-                                    ourAnimals[row, col] += readResult;
+                                    ourAnimals[pet, character] += readResult;
                                     if (readResult == "")
                                     {
-                                        if (ourAnimals[row, col] == "Age: ")
+                                        if (ourAnimals[pet, character] == "Age: ")
                                         {
-                                            ourAnimals[row, col] += "?";
+                                            ourAnimals[pet, character] += "?";
                                         }
                                         else
                                         {
-                                            ourAnimals[row, col] += "tbd";
+                                            ourAnimals[pet, character] += "tbd";
                                         }
-                                       
                                     }
-                                    
                                 }
-                                
-                                if (ourAnimals[row,0] == "ID #: ")
+
+                                if (ourAnimals[pet, (int)AnimalCharacteristics.Id] == "ID #: ")
                                 {
-                                    ourAnimals[row, 0] += ourAnimals[row,1].Substring(9, 1) + (animalCount + 1).ToString();
-                                    Console.WriteLine($"Pet ID is {ourAnimals[row,0]}");
+                                    ourAnimals[pet, (int)AnimalCharacteristics.Id] +=
+                                        ourAnimals[pet, (int)AnimalCharacteristics.Species].Substring(9, 1) +
+                                        (animalCount + 1).ToString();
+                                    Console.WriteLine($"Pet ID is {ourAnimals[pet, (int)AnimalCharacteristics.Id]}");
                                 }
 
                                 animalCount++;
@@ -225,11 +240,80 @@ static class SelectionAndIteration
 
                     break;
                 case "3":
-                    // TODO add feature: Ensure animal ages and physical descriptions are complete
+                    Console.WriteLine("\nPets Needing Age or Description:");
+                    int numericValue;
+                    var validEntry = false;
+                    for (int pet = 0; pet < pets; pet++)
+                    {
+                        var petId = ourAnimals[pet, (int)AnimalCharacteristics.Id];
+                        var petAge = ourAnimals[pet, (int)AnimalCharacteristics.Age];
+                        if (ourAnimals[pet, (int)AnimalCharacteristics.Id] != "ID #: " &&
+                            ourAnimals[pet, (int)AnimalCharacteristics.Age] == "Age: ?")
+                        {
+                            do
+                            {
+                                Console.WriteLine(
+                                    $"Please enter the age for {ourAnimals[pet, (int)AnimalCharacteristics.Id]} as a whole integer and press enter. IE 3 Type exit to skip this pet.");
+                                readResult = Console.ReadLine();
+                                validEntry = int.TryParse(readResult, out numericValue);
+                                if (validEntry)
+                                {
+                                    ourAnimals[pet, (int)AnimalCharacteristics.Age] += readResult;
+                                    Console.WriteLine(
+                                        $"You have updated the age of pet ID: {ourAnimals[pet, (int)AnimalCharacteristics.Id]}");
+                                }
+                                else
+                                {
+                                    if (readResult.ToLower().Trim() == "exit")
+                                    {
+                                        Console.WriteLine("You have selected to exit. Press the Enter key to continue");
+                                        Console.ReadLine();
+                                        break;
+                                    }
 
-                    Console.WriteLine(
-                        $"You selected menu option {menuSelection}. This is a Challenge Project - Please check back to see progress");
-                    Console.WriteLine("Press the Enter key to continue");
+                                    Console.WriteLine("You have entered an invalid entry, press enter to continue.");
+                                    Console.ReadLine();
+                                }
+                            } while (ourAnimals[pet, (int)AnimalCharacteristics.Age] == "Age: ?");
+
+                            Console.WriteLine("");
+                        }
+
+                        if (ourAnimals[pet, (int)AnimalCharacteristics.Id] != "ID #: " &&
+                            (ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] == "Physical description: tbd" || ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] == "Physical description: "))
+                        {
+                            do
+                            {
+                                Console.WriteLine(
+                                    $"Please enter the Physical Description for {ourAnimals[pet, (int)AnimalCharacteristics.Id]}. Such as color, pattern, size etc. Type exit to skip");
+                                readResult = Console.ReadLine();
+                                validEntry = (readResult.Trim() != "");
+                                if (readResult.ToLower().Trim() == "exit")
+                                {
+                                    Console.WriteLine("You have selected to exit. Press the Enter key to continue");
+                                    Console.ReadLine();
+                                    break;
+                                }
+                                if (validEntry)
+                                {
+                                    ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] += readResult;
+                                    Console.WriteLine(
+                                        $"You have updated the Physical Description of pet ID: {ourAnimals[pet, (int)AnimalCharacteristics.Id]}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You have entered an invalid entry. Press enter to continue.");
+                                    readResult = Console.ReadLine();
+                                }
+                            } while (ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] ==
+                                     "Physical description: " || ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] ==
+                                     "Physical description: tbd") ;
+
+                            Console.WriteLine("");
+                        }
+                    }
+
+                    Console.WriteLine("All pets are up to date. Press the Enter key to continue");
                     readResult = Console.ReadLine();
                     break;
                 case "4":
