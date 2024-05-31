@@ -129,6 +129,7 @@ static class SelectionAndIteration
 
             var pets = ourAnimals.GetLength(0);
             var characteristic = ourAnimals.GetLength(1); //index with ourAnimals[row,col]
+            var validEntry = false;
 
             switch (menuSelection)
             {
@@ -242,7 +243,7 @@ static class SelectionAndIteration
                 case "3":
                     Console.WriteLine("\nPets Needing Age or Description:");
                     int numericValue;
-                    var validEntry = false;
+
                     for (int pet = 0; pet < pets; pet++)
                     {
                         var petId = ourAnimals[pet, (int)AnimalCharacteristics.Id];
@@ -280,7 +281,8 @@ static class SelectionAndIteration
                         }
 
                         if (ourAnimals[pet, (int)AnimalCharacteristics.Id] != "ID #: " &&
-                            (ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] == "Physical description: tbd" || ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] == "Physical description: "))
+                            (ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] == "Physical description: tbd" ||
+                             ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] == "Physical description: "))
                         {
                             do
                             {
@@ -294,6 +296,7 @@ static class SelectionAndIteration
                                     Console.ReadLine();
                                     break;
                                 }
+
                                 if (validEntry)
                                 {
                                     ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] += readResult;
@@ -305,9 +308,8 @@ static class SelectionAndIteration
                                     Console.WriteLine("You have entered an invalid entry. Press enter to continue.");
                                     readResult = Console.ReadLine();
                                 }
-                            } while (ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] ==
-                                     "Physical description: " || ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] ==
-                                     "Physical description: tbd") ;
+                            } while (ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] == "Physical description: " ||
+                                     ourAnimals[pet, (int)AnimalCharacteristics.PhysicalDescrition] == "Physical description: tbd");
 
                             Console.WriteLine("");
                         }
@@ -317,11 +319,80 @@ static class SelectionAndIteration
                     readResult = Console.ReadLine();
                     break;
                 case "4":
-                    // TODO add feature: Ensure animal nicknames and personality descriptions are complete
+                    Console.WriteLine("\nPets Needing Personality Description or nickname:");
+                    for (int pet = 0; pet < pets; pet++)
+                    {
+                        if (ourAnimals[pet, (int)AnimalCharacteristics.Id] != "ID #: " &&
+                            (ourAnimals[pet, (int)AnimalCharacteristics.Personality] == "Personality: " ||
+                             ourAnimals[pet, (int)AnimalCharacteristics.Personality] == "Personality: tbd"))
+                        {
+                            do
+                            {
+                                Console.WriteLine(
+                                    $"Please enter the personality for {ourAnimals[pet, (int)AnimalCharacteristics.Id]} and press enter. IE housebroken, nice, friendly, needs fostering, ect. Type exit to skip this characteristic for this pet.");
+                                readResult = Console.ReadLine();
+                                validEntry = (readResult.Trim() != "");
+                                if (readResult.ToLower().Trim() == "exit")
+                                {
+                                    Console.WriteLine("You have selected to exit. Press the Enter key to continue");
+                                    Console.ReadLine();
+                                    break;
+                                }
 
-                    Console.WriteLine(
-                        $"You selected menu option {menuSelection}. This is a Challenge Project - Please check back to see progress");
-                    Console.WriteLine("Press the Enter key to continue");
+                                if (validEntry)
+                                {
+                                    ourAnimals[pet, (int)AnimalCharacteristics.Personality] += readResult;
+                                    Console.WriteLine(
+                                        $"You have updated the Personality of pet ID: {ourAnimals[pet, (int)AnimalCharacteristics.Id]}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You have entered an invalid entry. Press enter to continue.");
+                                    Console.ReadLine();
+                                }
+                                
+                            } while (ourAnimals[pet, (int)AnimalCharacteristics.Personality] == "Personality: " ||
+                                     ourAnimals[pet, (int)AnimalCharacteristics.Personality] == "Personality: tbd");
+
+                            Console.WriteLine("");
+                        }
+
+                        if (ourAnimals[pet, (int)AnimalCharacteristics.Id] != "ID #: " &&
+                            (ourAnimals[pet, (int)AnimalCharacteristics.Nickname] == "Nickname: tbd" ||
+                             ourAnimals[pet, (int)AnimalCharacteristics.Nickname] == "Nickname: "))
+                        {
+                            do
+                            {
+                                Console.WriteLine(
+                                    $"Please enter the nickname for {ourAnimals[pet, (int)AnimalCharacteristics.Id]}. Type exit to skip");
+                                readResult = Console.ReadLine();
+                                validEntry = (readResult.Trim() != "");
+                                if (readResult.ToLower().Trim() == "exit")
+                                {
+                                    Console.WriteLine("You have selected to exit. Press the Enter key to continue");
+                                    Console.ReadLine();
+                                    break;
+                                }
+
+                                if (validEntry)
+                                {
+                                    ourAnimals[pet, (int)AnimalCharacteristics.Nickname] += readResult;
+                                    Console.WriteLine(
+                                        $"You have updated the Nickname of pet ID: {ourAnimals[pet, (int)AnimalCharacteristics.Id]}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You have entered an invalid entry. Press enter to continue.");
+                                    readResult = Console.ReadLine();
+                                }
+                            } while (ourAnimals[pet, (int)AnimalCharacteristics.Nickname] == "Nickname: tbd" ||
+                                     ourAnimals[pet, (int)AnimalCharacteristics.Nickname] == "Nickname: ");
+
+                            Console.WriteLine("");
+                        }
+                    }
+
+                    Console.WriteLine("All pets are up to date. Press the Enter key to continue");
                     readResult = Console.ReadLine();
                     break;
                 case "5":
