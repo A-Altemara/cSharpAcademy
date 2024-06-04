@@ -9,7 +9,13 @@ static class Program
 {
     static void Main()
     {
-        SelectionAndIteration.ContosoPets();
+        CastingDataTypes.ExploringCasting();
+        
+        // DataTypesSelection.ReferenceTypes();
+        // DataTypesSelection.FloatingPointTypes();
+        // DataTypesSelection.IntegralTypes();
+        
+        // SelectionAndIteration.ContosoPets();
         
         // DoWhileAndWhileLoops.ArrayVerification();
         // DoWhileAndWhileLoops.ValidateString();
