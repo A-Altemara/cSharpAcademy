@@ -9,7 +9,14 @@ static class Program
 {
     static void Main()
     {
-        CastingDataTypes.ExploringCasting();
+        ArrayHelperMethods.Challenge2();
+        // ArrayHelperMethods.SplitAndJoin();
+        // ArrayHelperMethods.SortAndReverse();
+        // ArrayHelperMethods.ClearAndResize();
+        
+        // CastingDataTypes.TypeScope();
+        // CastingDataTypes.CombiningTypes();
+        // CastingDataTypes.ExploringCasting();
         
         // DataTypesSelection.ReferenceTypes();
         // DataTypesSelection.FloatingPointTypes();
