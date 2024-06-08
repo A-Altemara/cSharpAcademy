@@ -9,7 +9,11 @@ static class Program
 {
     static void Main()
     {
-        ArrayHelperMethods.Challenge2();
+        FormatingAlphaNumericData.Challenge1();
+        // FormatingAlphaNumericData.PaddingAndAlignment();
+        // FormatingAlphaNumericData.ExplorStingInterpolation();
+        
+        // ArrayHelperMethods.Challenge2();
         // ArrayHelperMethods.SplitAndJoin();
         // ArrayHelperMethods.SortAndReverse();
         // ArrayHelperMethods.ClearAndResize();
