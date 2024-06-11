@@ -81,7 +81,7 @@ static class FormatingAlphaNumericData
         // Console.WriteLine($"Dear {customerName},\n");
         // Console.WriteLine($"As a customer of our {currentProduct} offering we are excited to tell you about a new financial product that would dramatically increase your return.\n");
 
-        // complete solution that allows for whole thing to be output with one plan.
+        // complete solution that allows for whole thing to be output with one instruction.
         var builder = new StringBuilder();
 
         builder.AppendLine($"Dear {customerName},");

@@ -9,7 +9,12 @@ static class Program
 {
     static void Main()
     {
-        FormatingAlphaNumericData.Challenge1();
+        ModifyingStrings.Challenge1();
+        // ModifyingStrings.RemoveAndReplace();
+        // ModifyingStrings.IndexOFAnyAndLastIndexOf();
+        // ModifyingStrings.IndixOfAndSubString();
+        
+        // FormatingAlphaNumericData.Challenge1();
         // FormatingAlphaNumericData.PaddingAndAlignment();
         // FormatingAlphaNumericData.ExplorStingInterpolation();
         
