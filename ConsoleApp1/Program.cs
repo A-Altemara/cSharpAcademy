@@ -9,7 +9,10 @@ static class Program
 {
     static void Main()
     {
-        ModifyingStrings.Challenge1();
+        // VariableDataChallenge.Challenge1();
+        VariableDataChallenge.Challenge2();
+        
+        // ModifyingStrings.Challenge1();
         // ModifyingStrings.RemoveAndReplace();
         // ModifyingStrings.IndexOFAnyAndLastIndexOf();
         // ModifyingStrings.IndixOfAndSubString();
