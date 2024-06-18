@@ -9,7 +9,9 @@ static class Program
 {
     static void Main()
     {
-        MethodsWithParameters.MiniGame();
+        MethodsPettingZoo.PettingZoo();
+
+        // MethodsWithParameters.MiniGame();
         // MethodsWithParameters.PrintChange();
         // Console.WriteLine((MethodsWithParameters.ReverseSentence("There are snakes at the zoo.")));
         // Console.WriteLine(MethodsWithParameters.ReverseWord("snake"));
