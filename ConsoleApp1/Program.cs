@@ -9,7 +9,8 @@ static class Program
 {
     static void Main()
     {
-        MethodsPettingZoo.PettingZoo();
+        MethodsChallengeMiniGame.MiniGame();
+        // MethodsPettingZoo.PettingZoo();
 
         // MethodsWithParameters.MiniGame();
         // MethodsWithParameters.PrintChange();
