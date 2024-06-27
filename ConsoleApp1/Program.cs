@@ -9,7 +9,24 @@ static class Program
 {
     static void Main()
     {
-        MethodsChallengeMiniGame.MiniGame();
+        ExceptionHandling.ChallengeToCreateAndThrowException();
+        // ExceptionHandling.CreateAndThrowException();
+        // ExceptionHandling.RethrowAnException();
+        // ExceptionHandling.CreateAnExceptionObject();
+        
+        // ExceptionHandling.TryCatchChallenge2();
+        // ExceptionHandling.MultipleCatches();
+        // ExceptionHandling.TryCatchChallenge1();
+        // ExceptionHandling.CallStackUnwinding();
+        // ExceptionHandling.FirstTest();
+        
+        // DebuggingTests.DebuggingChallenge1();
+        // DebuggingTests.MonitorWatch();
+        // DebuggingTests.ConfigureAndLaunch();
+        // DebuggingTests.ExploreBreakpoints();
+        // DebuggingTests.ExploreDebugging();
+        
+        // MethodsChallengeMiniGame.MiniGame();
         // MethodsPettingZoo.PettingZoo();
 
         // MethodsWithParameters.MiniGame();
