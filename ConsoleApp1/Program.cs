@@ -9,7 +9,9 @@ static class Program
 {
     static void Main()
     {
-        ExceptionHandling.ChallengeToCreateAndThrowException();
+        GuidedDebugChallenge.DebugChallenge();
+        
+        // ExceptionHandling.ChallengeToCreateAndThrowException();
         // ExceptionHandling.CreateAndThrowException();
         // ExceptionHandling.RethrowAnException();
         // ExceptionHandling.CreateAnExceptionObject();
